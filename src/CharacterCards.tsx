@@ -11,7 +11,7 @@ export default function CharacterCards({
   return (
     <Row xs={1} md={2} lg={3} xl={4} className="g-2 g-md-5">
       {characters?.map((character: Character) => (
-        <Col>
+        <Col key={character.id}>
           <Card
             className=""
             role="button"
