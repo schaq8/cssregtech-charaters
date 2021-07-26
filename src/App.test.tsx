@@ -6,6 +6,10 @@ import App from "./App";
 
 const store = setupStore();
 
+it("renders without crashing", () => {
+  window.scrollTo = jest.fn();
+});
+
 test("renders cssregtech.com link", () => {
   const { getByText } = render(
     <Provider store={store}>
@@ -14,6 +18,16 @@ test("renders cssregtech.com link", () => {
   );
 
   expect(getByText(/cssregtech/i)).toBeInTheDocument();
+});
+
+test("renders page info", () => {
+  const { getByText } = render(
+    <Provider store={store}>
+      <App />
+    </Provider>
+  );
+
+  expect(getByText(/Page/i)).toBeInTheDocument();
 });
 
 test("renders page info", () => {
